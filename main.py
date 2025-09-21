@@ -39,4 +39,5 @@ def weather_in_city(message):
     else:
         bot.reply_to(message, "Wrong city")
 
-    bot.infinity_polling()
+
+bot.infinity_polling()
