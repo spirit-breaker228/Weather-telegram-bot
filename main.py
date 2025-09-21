@@ -21,20 +21,9 @@ def weather_in_city(message):
     )
     if response.status_code == 200:
         data = json.loads(response.text)
-        wind_speed = data["wind"]["speed"]
-        if wind_speed < 3:
-            wind_status = "light"
-        elif wind_speed < 6:
-            wind_status = "moderate"
-        elif wind_speed < 11:
-            wind_status = "quite strong"
-        elif wind_speed < 20:
-            wind_status = "strong"
-        else:
-            wind_status = "very strong"
         bot.reply_to(
             message,
-            f"{city.title()} weather: \n Sky: {data['weather'][0]['description']} \n temp: {data['main']['temp']} celsius \n Feels like: {data['main']['feels_like']} celius \n Wind: {wind_status}, {data['wind']['speed']} m/s",
+            f"{city.title()} weather: \n Sky: {data['weather'][0]['description']} \n temp: {data['main']['temp']} celsius \n Feels like: {data['main']['feels_like']} celius \n Wind: {data['wind']['speed']} m/s",
         )
     else:
         bot.reply_to(message, "Wrong city")
